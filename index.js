@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const http = require('http')
-
+var app = express()
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
@@ -13,4 +13,9 @@ express()
   .get('/cool', (req, res) => res.send(cool()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
   
- 
+ app.set('port', (process.env.PORT || 5000))
+app.use(express.static(__dirname + '/public'))
+
+app.get('/', function(request, response) {
+  response.send('Hello World!')
+})
