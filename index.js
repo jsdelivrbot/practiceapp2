@@ -10,3 +10,7 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send(cool()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  
+  app.get('/', function (req, res) {
+  res.send('hello world')
+})
